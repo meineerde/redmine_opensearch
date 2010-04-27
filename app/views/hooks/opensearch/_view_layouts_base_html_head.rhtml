@@ -1,6 +1,4 @@
-<link rel="search" type="application/opensearchdescription+xml" href="<%= url_for :controller => 'opensearch', :action => 'index' %>"
-      title="<%=h Setting.app_title %>" />
+<%= tag :link, :rel => 'search', :type => 'application/opensearchdescription+xml', :href => url_for(:controller => 'opensearch', :action => 'index'), :title => h(Setting.app_title) %>
 <% if @project -%>
-<link rel="search" type="application/opensearchdescription+xml" href="<%= url_for :controller => 'opensearch', :action => 'index', :project_id => @project %>"
-      title="<%=h Setting.app_title %> – <%=h @project.name %>" />
+  <%= tag :link, :rel => 'search', :type => 'application/opensearchdescription+xml', :href => url_for(:controller => 'opensearch', :action => 'index', :project_id => @project), :title => "#{h Setting.app_title} - #{h @project.name}" %>
 <%- end %>
