@@ -8,6 +8,14 @@ class OpensearchController < ApplicationController
   skip_before_filter :check_if_login_required
   before_filter :check_project_privacy, :only => Proc.new {@project}
   
+  begin
+    # this is implemented in the redmine_favicon plugin
+    include FaviconHelper
+  rescue
+    def favicon_path; "/favicon.ico"; end
+    def favicon_mime_type; "image/x-icon"; end
+  end
+  
   def index
     render :index, :layout => false, :content_type => 'application/opensearchdescription+xml'
   end
