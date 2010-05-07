@@ -12,11 +12,15 @@ class OpensearchController < ApplicationController
     # this is implemented in the redmine_favicon plugin
     include FaviconHelper
   rescue
-    def favicon_path; "/favicon.ico"; end
-    def favicon_mime_type; "image/x-icon"; end
+    favicon_path = "/favicon.ico"
   end
   
   def index
+    favicon = URI.parse favicon_path
+    favicon.host = Setting.host_name unless favicon.host
+    favicon.scheme = Setting.protocol unless favicon.scheme
+    @favicon_path = favicon.to_s
+    
     render :index, :layout => false, :content_type => 'application/opensearchdescription+xml'
   end
 
