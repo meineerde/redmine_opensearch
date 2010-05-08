@@ -4,7 +4,7 @@
   <ShortName><%=h Setting.app_title %> <%= ("- " + h(@project.name)) if @project %></ShortName>
   <Description><%=h Setting.app_title %> <%= ("- " + h(@project.name)) if @project %></Description>
   <InputEncoding>UTF-8</InputEncoding>
-  <Image><%= URI.escape @favicon_path %></Image>
+  <Image><%= URI.escape favicon_url %></Image>
   <moz:SearchForm><%= url_for :controller => "search", :action => "index", :id => @project, :only_path => false %></moz:SearchForm>
   <Url type="text/html" method="GET" template="<%= url_for :controller => "search", :action => "index", :id => @project, :q => "{searchTerms}", :only_path => false %>" />
   <Url type="application/opensearchdescription+xml" rel="self"
