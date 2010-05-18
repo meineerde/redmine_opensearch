@@ -6,7 +6,7 @@
   <InputEncoding>UTF-8</InputEncoding>
   <Image><%= URI.escape favicon_url %></Image>
   <moz:SearchForm><%= url_for :controller => "search", :action => "index", :id => @project, :only_path => false %></moz:SearchForm>
-  <Url type="text/html" method="GET" template="<%= url_for :controller => "search", :action => "index", :id => @project, :q => "{searchTerms}", :only_path => false %>" />
+  <Url type="text/html" method="GET" template="<%= url_for :controller => "search", :action => "index", :id => @project, :only_path => false %>?q={searchTerms}" />
   <Url type="application/opensearchdescription+xml" rel="self"
        template="<%= url_for :controller => 'opensearch', :action => 'index', :project_id => @project, :only_path => false %>"/>
   <moz:UpdateUrl><%= url_for :controller => 'opensearch', :action => 'index', :project_id => @project, :only_path => false %></moz:UpdateUrl>
