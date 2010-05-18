@@ -17,7 +17,7 @@ module OpensearchFaviconHelper
         contents = File.read(favicon_filesystem_path)
         base64 = Base64::encode64(contents).gsub("\n", "")
         # TODO: determine the correct mime type
-        mime_type=""
+        mime_type="image/x-icon"
       
         "data:#{mime_type};base64,#{base64}"
       end

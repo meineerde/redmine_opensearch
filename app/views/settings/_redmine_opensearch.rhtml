@@ -1,0 +1,8 @@
+<p>
+  <%= label_tag "settings_favicon_uri_type", l(:label_favicon_uri_type) %>
+  <%=
+    select_tag 'settings[favicon_uri_type]', options_for_select([
+      [l(:field_url), 'url'],
+      [l(:label_data_uri), 'data_uri'],
+    ], @settings['favicon_uri_type'])  %>
+</p>

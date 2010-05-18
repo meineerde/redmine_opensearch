@@ -4,7 +4,11 @@
   <ShortName><%=h Setting.app_title %> <%= ("- " + h(@project.name)) if @project %></ShortName>
   <Description><%=h Setting.app_title %> <%= ("- " + h(@project.name)) if @project %></Description>
   <InputEncoding>UTF-8</InputEncoding>
-  <% if favicon_data_uri %><Image><%= favicon_data_uri %></Image><% end %>
+  <%- if (Setting.plugin_redmine_opensearch["favicon"] == "data_uri") && favicon_data_uri -%>
+  <Image height="16" width="16" type="image/x-icon"><%= favicon_data_uri %></Image>
+  <%- else -%>
+  <Image height="16" width="16" type="image/x-icon"><%= favicon_url %></Image>
+  <%- end -%>
   <moz:SearchForm><%= url_for :controller => "search", :action => "index", :id => @project, :only_path => false %></moz:SearchForm>
   <Url type="text/html" method="GET" template="<%= url_for :controller => "search", :action => "index", :id => @project, :only_path => false %>?q={searchTerms}" />
   <Url type="application/opensearchdescription+xml" rel="self"
