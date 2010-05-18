@@ -14,7 +14,7 @@ Redmine::Plugin.register :redmine_opensearch do
   requires_redmine :version_or_higher => '0.8'
   
   settings_defaults = {
-    'favicon' => "url",
+    'favicon_uri_type' => "url",
   }
   
   settings :default => settings_defaults, :partial => 'settings/redmine_opensearch'

@@ -4,7 +4,7 @@
   <ShortName><%=h Setting.app_title %> <%= ("- " + h(@project.name)) if @project %></ShortName>
   <Description><%=h Setting.app_title %> <%= ("- " + h(@project.name)) if @project %></Description>
   <InputEncoding>UTF-8</InputEncoding>
-  <%- if (Setting.plugin_redmine_opensearch["favicon"] == "data_uri") && favicon_data_uri -%>
+  <%- if (Setting.plugin_redmine_opensearch["favicon_uri_type"] == "data_uri") && favicon_data_uri -%>
   <Image height="16" width="16" type="image/x-icon"><%= favicon_data_uri %></Image>
   <%- else -%>
   <Image height="16" width="16" type="image/x-icon"><%= favicon_url %></Image>
