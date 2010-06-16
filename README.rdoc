@@ -3,7 +3,8 @@
 Author:: Holger Just
 URL:: http://dev.holgerjust.de/projects/redmine-opensearch
 
-This Redmine-plugin adds a "Opensearch":http://www.opensearch.org/ plugin.
+This plugin to Redmine adds a Opensearch plugin. See http://www.opensearch.org/
+for more information.
 
 Copyright (c) 2010 Holger Just
 
