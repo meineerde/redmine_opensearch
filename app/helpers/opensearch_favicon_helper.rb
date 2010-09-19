@@ -29,7 +29,7 @@ module OpensearchFaviconHelper
     @favicon_url ||= begin
       favicon = URI.parse favicon_path
     
-      (host_name, color, port) = Setting.host_name.partition(":")
+      host_name, port = Setting.host_name.split(":")
     
       favicon.host = host_name unless favicon.host
       favicon.port = port unless (favicon.port || port.blank?)
