@@ -1,4 +1,4 @@
-# This is the compatibility layer iused then the redmine_favicon_plugin is
+# This is the compatibility layer used when the redmine_favicon_plugin is
 # not installed
 
 module OpensearchFaviconHelper
@@ -32,7 +32,7 @@ module OpensearchFaviconHelper
       host_name, port = Setting.host_name.split(":")
     
       favicon.host = host_name unless favicon.host
-      favicon.port = port unless (favicon.port || port.blank?)
+      favicon.port = port.to_i unless (favicon.port || port.blank?)
       favicon.scheme = Setting.protocol unless favicon.scheme
       favicon.to_s
     end

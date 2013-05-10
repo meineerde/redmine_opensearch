@@ -6,7 +6,7 @@ class OpensearchController < ApplicationController
   # only perform access checks if we have a @project
   # global opensearch plugin is safe
   skip_before_filter :check_if_login_required
-  before_filter :check_project_privacy, :only => Proc.new {@project}
+  before_filter :check_project_privacy, :if => '@project.present?'
 
   helper :opensearch_favicon
 
