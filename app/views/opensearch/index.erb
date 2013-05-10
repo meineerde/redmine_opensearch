@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/"
                        xmlns:moz="http://www.mozilla.org/2006/browser/search/">
-  <ShortName><%=h Setting.app_title %> <%= ("- " + h(@project.name)) if @project %></ShortName>
-  <Description><%=h Setting.app_title %> <%= ("- " + h(@project.name)) if @project %></Description>
+  <ShortName><%= Setting.app_title %><%= (" - " + @project.name) if @project %></ShortName>
+  <Description><%= Setting.app_title %><%= (" - " + @project.name) if @project %></Description>
   <InputEncoding>UTF-8</InputEncoding>
   <%- if (Setting.plugin_redmine_opensearch["favicon_uri_type"] == "data_uri") && favicon_data_uri -%>
   <Image height="16" width="16" type="image/x-icon"><%= favicon_data_uri %></Image>
@@ -11,7 +11,11 @@
   <%- end -%>
   <moz:SearchForm><%= url_for :controller => "search", :action => "index", :id => @project, :only_path => false %></moz:SearchForm>
   <Url type="text/html" method="GET" template="<%= url_for :controller => "search", :action => "index", :id => @project, :only_path => false %>?q={searchTerms}" />
-  <Url type="application/opensearchdescription+xml" rel="self"
-       template="<%= url_for :controller => 'opensearch', :action => 'index', :project_id => @project, :only_path => false %>"/>
-  <moz:UpdateUrl><%= url_for :controller => 'opensearch', :action => 'index', :project_id => @project, :only_path => false %></moz:UpdateUrl>
+<% if @project %>
+  <Url type="application/opensearchdescription+xml" rel="self" template="<%= project_opensearch_url :project_id => @project.id %>"/>
+  <moz:UpdateUrl><%= project_opensearch_url :project_id => @project.id %></moz:UpdateUrl>
+<% else %>
+  <Url type="application/opensearchdescription+xml" rel="self" template="<%= opensearch_url %>"/>
+  <moz:UpdateUrl><%= opensearch_url %></moz:UpdateUrl>
+<% end %>
 </OpenSearchDescription>

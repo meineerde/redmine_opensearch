@@ -1,0 +1,4 @@
+<link rel="search" type="application/opensearchdescription+xml" href="<%= opensearch_path %>" title="<%= Setting.app_title %>" />
+<% if @project %>
+<link rel="search" type="application/opensearchdescription+xml" href="<%= project_opensearch_path :project_id => @project.id %>" title="<%= Setting.app_title %> - <%= @project.name %>" />
+<% end %>

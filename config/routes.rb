@@ -1,4 +1,2 @@
-ActionController::Routing::Routes.draw do |map| 
-  map.connect 'projects/:project_id/opensearch', :controller => 'opensearch', :action => 'index'
-  map.connect 'opensearch', :controller => 'opensearch', :action => 'index'
-end
+get 'projects/:project_id/opensearch', :to => 'opensearch#index', :as => 'project_opensearch'
+get 'opensearch', :to => 'opensearch#index', :as => 'opensearch'
