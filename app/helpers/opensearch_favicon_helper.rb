@@ -6,7 +6,7 @@ module OpensearchFaviconHelper
     # this is implemented in the redmine_favicon plugin
     include FaviconHelper
   rescue
-    def favicon_filesystem_path; File.join(ActionView::Helpers::AssetTagHelper::ASSETS_DIR, 'favicon.ico') end
+    def favicon_filesystem_path; File.join(Rails.public_path, 'favicon.ico') end
     def favicon_path; '/favicon.ico' end
   end
   
