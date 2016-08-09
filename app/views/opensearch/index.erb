@@ -12,8 +12,8 @@
   <moz:SearchForm><%= url_for :controller => "search", :action => "index", :id => @project, :only_path => false %></moz:SearchForm>
   <Url type="text/html" method="GET" template="<%= url_for :controller => "search", :action => "index", :id => @project, :only_path => false %>?q={searchTerms}" />
 <% if @project %>
-  <Url type="application/opensearchdescription+xml" rel="self" template="<%= project_opensearch_url :project_id => @project.id %>"/>
-  <moz:UpdateUrl><%= project_opensearch_url :project_id => @project.id %></moz:UpdateUrl>
+  <Url type="application/opensearchdescription+xml" rel="self" template="<%= project_opensearch_url :project_id => @project %>"/>
+  <moz:UpdateUrl><%= project_opensearch_url :project_id => @project %></moz:UpdateUrl>
 <% else %>
   <Url type="application/opensearchdescription+xml" rel="self" template="<%= opensearch_url %>"/>
   <moz:UpdateUrl><%= opensearch_url %></moz:UpdateUrl>
