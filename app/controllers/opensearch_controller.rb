@@ -17,7 +17,11 @@ class OpensearchController < ApplicationController
   private
 
   def find_optional_project
-    @project = Project.find(params[:project_id]) unless params[:project_id].blank?
+    return true if params[:project_id].blank?
+    # Don't expose projects to anonymous users
+    return render_403 if Setting.login_required? && !User.current.logged?
+
+    @project = Project.find(params[:project_id])
   rescue ActiveRecord::RecordNotFound
     render_404
   end
